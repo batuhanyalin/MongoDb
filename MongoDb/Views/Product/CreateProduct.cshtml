@@ -1,0 +1,26 @@
+﻿@model CreateProductDto
+@{
+    Layout = null;
+}
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<div class="container">
+    <br />
+    <br />
+    <form method="post">
+        <div class="alert alert-info">Yeni Ürün Ekleme Sayfası</div>
+        <label>Ürün Adı</label>
+        <input type="text" asp-for="ProductName" class="form-control" />
+        <br />
+        <label>Kategorisi</label>
+        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
+        <br />
+        <label>Stok Sayısı</label>
+        <input type="number" asp-for="Stock" class="form-control" />
+        <br />
+        <label>Fiyatı</label>
+        <input type="number" asp-for="Price" class="form-control" />
+        <br />
+     
+        <button class="btn btn-primary">Ürün Oluştur</button>
+    </form>
+</div>
