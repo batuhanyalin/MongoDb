@@ -1,20 +1,10 @@
 ﻿@model List<ResultCategoryDto>
 @{
-    Layout = null;
+    ViewData["Title"] = "CategoryList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-
-
-<div class="container">
-    <br />
     <div class="alert alert-primary">Kategori Listesi</div>
-    <br />
-    <a class="btn btn-info" href="/Category/CreateCategory/">Yeni Kategori Ekle</a>
-    <br />
-    <br />
     <table class="table table-bordered table-hover">
         <thead>
             <tr>
@@ -36,4 +26,4 @@
             }
         </tbody>
     </table>
-</div>
+

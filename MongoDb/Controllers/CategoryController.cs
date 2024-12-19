@@ -12,7 +12,11 @@ namespace MongoDb.Controllers
         {
             _categoryService = categoryService;
         }
-
+        public async Task<IActionResult> xxx()
+        {
+            var value = await _categoryService.GetAlllCategoryAsync();
+            return View(value);
+        }
         public async Task<IActionResult> CategoryList()
         {
             var value = await _categoryService.GetAlllCategoryAsync();
