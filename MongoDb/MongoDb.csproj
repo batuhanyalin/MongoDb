@@ -7,6 +7,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\sidebar-07\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\css\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\css\bootstrap\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\css\bootstrap\mixins\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\fonts\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\images\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\js\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\scss\.DS_Store" />
+    <None Include="wwwroot\sidebar-07\scss\bootstrap\.DS_Store" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.17" />
     <PackageReference Include="MongoDB.Bson" Version="2.25.0" />
