@@ -1,4 +1,5 @@
-﻿using MongoDb.Entities;
+﻿using MongoDb.Dtos.CategoryDtos;
+using MongoDb.Entities;
 
 namespace MongoDb.Dtos.ProductDtos
 {
@@ -8,7 +9,6 @@ namespace MongoDb.Dtos.ProductDtos
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        public string? CategoryId { get; set; }
-        public Category Category { get; set; }
+        public ResultCategoryDto Category { get; set; }
     }
 }

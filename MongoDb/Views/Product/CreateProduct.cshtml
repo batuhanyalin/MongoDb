@@ -1,26 +1,25 @@
 ﻿@model CreateProductDto
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-<div class="container">
-    <br />
-    <br />
-    <form method="post">
-        <div class="alert alert-info">Yeni Ürün Ekleme Sayfası</div>
-        <label>Ürün Adı</label>
-        <input type="text" asp-for="ProductName" class="form-control" />
-        <br />
-        <label>Kategorisi</label>
-        @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.category, new { @class = "form-control" })
-        <br />
-        <label>Stok Sayısı</label>
-        <input type="number" asp-for="Stock" class="form-control" />
-        <br />
-        <label>Fiyatı</label>
-        <input type="number" asp-for="Price" class="form-control" />
-        <br />
-     
-        <button class="btn btn-primary">Ürün Oluştur</button>
-    </form>
+<div class="row">
+    <div class="col col-md-4">
+        <div class="alert alert-success"><h5>Yeni Ürün</h5></div>
+        <hr />
+        <form method="post">
+            <label>Ürün Adı</label>
+            <input type="text" asp-for="ProductName" class="form-control" />
+            <br />
+            <label>Kategori</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="@ViewBag.categoryList"></select>
+            <br />
+            <label>Stok</label>
+            <input type="number" asp-for="Stock" class="form-control" />
+            <br />
+            <label>Fiyat</label>
+            <input type="text" asp-for="Price" class="form-control" />
+            <br />
+            <button class="btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+        </form>
+    </div>
 </div>

@@ -32,7 +32,7 @@ namespace MongoDb.Controllers
                                             Text = x.CategoryName,
                                             Value = x.CategoryId
                                         }).ToList();
-            ViewBag.category = cat;
+            ViewBag.categoryList = cat;
             return View();
         }
         [HttpPost]
@@ -53,6 +53,14 @@ namespace MongoDb.Controllers
                 Price = value.Price,
                 CategoryId=value.CategoryId,
             };
+            var values = await _categoryService.GetAlllCategoryAsync();
+            List<SelectListItem> cat = (from x in values.ToList()
+                                        select new SelectListItem
+                                        {
+                                            Text = x.CategoryName,
+                                            Value = x.CategoryId
+                                        }).ToList();    
+            ViewBag.categoryList = cat;
             return View(updateProductDto);
         }
         [HttpPost]

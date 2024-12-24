@@ -1,19 +1,17 @@
 ﻿@model UpdateCategoryDto
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-<div class="container">
-    <br />
-    <br />
-    <form method="post">
-        <div class="alert alert-success">Kategori Güncelleme Sayfası</div>
-        <input type="hidden" asp-for="CategoryId" />
-        <label>Kategori Adı</label>
-        <input type="text" asp-for="CategoryName" class="form-control" />
-        <br />
-        <button class="btn btn-primary">Kategoriyi Güncelle</button>
-    </form>
-
+<div class="row">
+    <div class="col col-md-4">
+        <div class="alert alert-warning"><h5>Kategori Güncelle</h5></div>
+        <hr />
+        <form method="post">
+            <label>Kategori Adı</label>
+            <input type="hidden" asp-for="CategoryId" />
+            <input type="text" asp-for="CategoryName" class="form-control" />
+            <br />
+            <button class="btn btn-warning"><i class="fas fa-sync-alt"></i> Güncelle</button>
+        </form>
+    </div>
 </div>

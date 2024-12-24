@@ -14,6 +14,8 @@ namespace MongoDb.Entities
         [BsonRepresentation(BsonType.Decimal128)]//BsonType. veri türü formatıdır ve bunu belirler.
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        public string? CategoryId { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string CategoryId {  get; set; }
+        public Category Category { get; set; }
     }
 }
