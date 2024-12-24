@@ -1,0 +1,29 @@
+﻿@model List<ResultOrderStatusDto>
+@{
+    ViewData["Title"] = "OrderStatusList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="alert alert-primary">Sipariş Durum Listesi</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Sipariş Durum Adı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderStatusId</td>
+                <td>@item.OrderStatusName</td>
+                <td><a class="btn btn-danger" href="/OrderStatus/DeleteOrderStatus/@item.OrderStatusId">Sil</a></td>
+                <td><a class="btn btn-warning" href="/OrderStatus/UpdateOrderStatus/@item.OrderStatusId">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

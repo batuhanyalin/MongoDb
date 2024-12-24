@@ -1,0 +1,62 @@
+﻿@model List<ResultOrderDto>
+@{
+    ViewData["Title"] = "OrderList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="alert alert-primary">Sipariş Listesi</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ürün</th>
+            <th>Müşteri</th>
+            <th>Tarih</th>
+            <th>Fiyat</th>
+            <th>Durum</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderId</td>
+                <td>@item.Product.ProductName</td>
+                <td>@item.Customer.Name @item.Customer.Surname</td>
+                <td>@item.OrderDate.ToString("dd.MM.yyy")</td>
+                <td>@item.Product.Price</td>
+                <td>
+                    @{
+                        if (item.OrderStatus.OrderStatusName == "Onaylandı")
+                        {
+                            <span class="badge badge-success"><i class="fas fa-thumbs-up"></i> &nbsp;&nbsp;@item.OrderStatus.OrderStatusName</span>
+                        }
+                        else if (item.OrderStatus.OrderStatusName == "Onaylanmadı")
+                        {
+                            <span class="badge badge-primary"><i class="fas fa-thumbs-down"></i> &nbsp;&nbsp;@item.OrderStatus.OrderStatusName</span>
+                        }
+                        else if (item.OrderStatus.OrderStatusName == "Onay Bekliyor")
+                        {
+                            <span class="badge badge-warning"><i class="fas fa-hourglass-half"></i> &nbsp;&nbsp;@item.OrderStatus.OrderStatusName</span>
+                        }
+                        else if (item.OrderStatus.OrderStatusName == "İptal Edildi")
+                        {
+                            <span class="badge badge-danger"><i class="fas fa-angry"></i> &nbsp;&nbsp;@item.OrderStatus.OrderStatusName</span>
+                        }
+                        else if (item.OrderStatus.OrderStatusName == "Geçmiş Sipariş")
+                        {
+                            <span class="badge badge-info"><i class="fas fa-calendar-check"></i> &nbsp;&nbsp;@item.OrderStatus.OrderStatusName</span>
+                        }
+                    }
+
+                </td>
+                <td><a class="btn btn-danger" href="/Order/DeleteOrder/@item.OrderId">Sil</a></td>
+                <td><a class="btn btn-warning" href="/Order/UpdateOrder/@item.OrderId">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

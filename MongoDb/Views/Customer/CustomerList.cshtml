@@ -1,0 +1,32 @@
+﻿@model List<ResultCustomerDto>
+@{
+    ViewData["Title"] = "CustomerList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<div class="alert alert-primary">Müşteri Listesi</div>
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Müşteri Adı</th>
+            <th>Müşteri Soyadı</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.CustomerId</td>
+                <td>@item.Name</td>
+                <td>@item.Surname</td>
+                <td><a class="btn btn-danger" href="/Customer/DeleteCustomer/@item.CustomerId">Sil</a></td>
+                <td><a class="btn btn-warning" href="/Customer/UpdateCustomer/@item.CustomerId">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

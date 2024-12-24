@@ -1,5 +1,8 @@
 using Microsoft.Extensions.Options;
 using MongoDb.Services.CategoryServices;
+using MongoDb.Services.CustomerServices;
+using MongoDb.Services.OrderServices;
+using MongoDb.Services.OrderStatusServices;
 using MongoDb.Services.ProductServices;
 using MongoDb.Settings;
 using System.Reflection;
@@ -8,9 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderStatusService, OrderStatusService>();
+builder.Services.AddScoped<ICustomerService, CustomerService>();
+
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddScoped<IDatabaseSettings>(sp =>

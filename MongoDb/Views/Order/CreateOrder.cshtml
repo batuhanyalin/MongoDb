@@ -1,0 +1,25 @@
+﻿@model CreateOrderDto
+@{
+    ViewData["Title"] = "CreateOrder";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col col-md-4">
+        <div class="alert alert-success"><h5>Yeni Sipariş</h5></div>
+        <hr />
+        <form method="post">
+            <input type="hidden" asp-for="OrderDate" value="@DateTime.Now" class="form-control" />
+            <label>Ürün</label>
+            <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.productList"></select>
+            <br />
+            <label>Müşteri</label>
+            <select asp-for="CustomerId" class="form-control" asp-items="@ViewBag.customerList"></select>
+            <br />
+            <label>Sipariş Durum</label>
+            <select asp-for="OrderStatusId" class="form-control" asp-items="@ViewBag.orderStatusList"></select>
+            <br />
+            <button class="btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+        </form>
+    </div>
+</div>

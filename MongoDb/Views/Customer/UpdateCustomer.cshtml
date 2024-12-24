@@ -1,0 +1,22 @@
+﻿@model UpdateCustomerDto
+@{
+    ViewData["Title"] = "UpdateCustomer";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col col-md-4">
+        <div class="alert alert-warning"><h5>Müşteri Güncelle</h5></div>
+        <hr />
+        <form method="post">
+            <label>Müşteri Adı</label>
+            <input type="hidden" asp-for="CustomerId" />
+            <input type="text" asp-for="Name" class="form-control" />
+            <br />
+            <label>Müşteri Soyadı</label>
+            <input type="text" asp-for="Surname" class="form-control" />
+            <br />
+            <button class="btn btn-warning"><i class="fas fa-sync-alt"></i> Güncelle</button>
+        </form>
+    </div>
+</div>

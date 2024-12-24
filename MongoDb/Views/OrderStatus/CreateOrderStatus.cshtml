@@ -1,0 +1,18 @@
+﻿@model CreateOrderStatusDto
+@{
+    ViewData["Title"] = "CreateOrderStatus";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col col-md-4">
+        <div class="alert alert-success"><h5>Yeni Sipariş Durum</h5></div>
+        <hr />
+        <form method="post">
+            <label>Sipariş Durum Adı</label>
+            <input type="text" asp-for="OrderStatusName" class="form-control" />
+            <br />
+            <button class="btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
+        </form>
+    </div>
+</div>
