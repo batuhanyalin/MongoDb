@@ -20,7 +20,7 @@ Projede Müşteri, Ürün, Sipariş, Kategori ve KategoriDurum olmak üzere topl
 ![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/mongoDbGoogleCloudProject.gif)
 ### Veritabanı
 ![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/database.png?raw=true)
-### Veritabanı
+### Google Cloud
 ![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/googleCloud.png?raw=true)
 
 ![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/googleCloudImage.png?raw=true)
