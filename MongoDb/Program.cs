@@ -5,6 +5,7 @@ using MongoDb.Services.GoogleStorageServices;
 using MongoDb.Services.OrderServices;
 using MongoDb.Services.OrderStatusServices;
 using MongoDb.Services.ProductServices;
+using MongoDb.Services.StatisticServices;
 using MongoDb.Settings;
 using System.Reflection;
 
@@ -18,6 +19,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderStatusService, OrderStatusService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
+builder.Services.AddScoped<IStatisticService, StatisticService>();
 
 builder.Services.AddScoped<IGoogleStorageService, GoogleStorageService>();
 

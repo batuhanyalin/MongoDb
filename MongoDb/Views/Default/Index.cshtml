@@ -1,0 +1,107 @@
+﻿@model StatisticListDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div style="text-align:center" class="col-md-12">
+            <div class="alert alert-danger">
+                <div>
+                    <h6>M&Y Yazılım Eğitim Akademi Danışmanlık' tan aldığım eğitim kapsamında hazırladığım 8. projedir. </h6>
+                </div>
+            </div>
+            <div class="alert alert-info">
+                <h4>MongoDb - Google Cloud Projesi</h4>
+                <img height="120px" width="auto" src="~/css/icons8_google_500px.png" /> <img height="80px" width="auto" src="~/css/icons8_mongodb_480px.png" />
+                <br />
+                <span>Batuhan YALIN tarafından yapılmıştır.</span>
+            </div>
+            <div class="alert alert-dark">
+                <div>
+                    <span>
+                        Projede <strong style="color:green">MongoDb</strong> veritabanıyla birlikte ilişkili tablolara yer verilmiştir. Bununla birlikte <strong style="color:blue">Google Cloud (Storage) servisi</strong>
+                        kullanılarak, ürünlerin görselleri bulut sunucu üzerine kaydedilip yine görseller bulut üzerinden veriyle eşli olarak çekilebilmektedir.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-warning d-flex flex-column align-items-center p-4">
+                    <h6>Toplam Ürün Sayısı</h6>
+                    <i class="fab fa-product-hunt fa-3x mb-2"></i>
+                    <span>@Model.productCount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-success d-flex flex-column align-items-center p-4">
+                    <h6>Toplam Müşteri Sayısı</h6>
+                    <i class="fas fa-users fa-3x mb-2"></i>
+                    <span>@Model.customerCount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-info d-flex flex-column align-items-center p-4">
+                    <h6>Toplam Sipariş Sayısı</h6>
+                    <i class="fas fa-concierge-bell fa-3x mb-2"></i>
+                    <span>@Model.orderCount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-secondary d-flex flex-column align-items-center p-4">
+                    <h6>Toplam Kategori Sayısı</h6>
+                    <i class="fab fa-product-hunt fa-3x mb-2"></i>
+                    <span>@Model.categoryCount</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <h4>Kategorilere Göre Ürün Sayıları</h4>
+    <div class="row">
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-warning d-flex flex-column align-items-center p-4">
+                    <h6>Beyaz Eşya</h6>
+                    <span>@Model.productListForBeyazEsyaCount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-success d-flex flex-column align-items-center p-4">
+                    <h6>Ekran Kartı</h6>
+                    <span>@Model.productListForEkranKartıCount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-info d-flex flex-column align-items-center p-4">
+                    <h6>Küçük Ev Aletleri</h6>
+                    <span>@Model.productListForKEACount</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mb-4">
+            <div class="form-group">
+                <div class="btn btn-secondary d-flex flex-column align-items-center p-4">
+                    <h6>Telefon</h6>
+                    <span>@Model.productListForTelefonCount</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+</div>
