@@ -1,5 +1,5 @@
 # 💻 Asp.Net Core 8.0 MongoDb NoSQL - Google Cloud Projesi
-📢 M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştirmiş olduğum 8. proje olan Rent A Car Filtre Uygulaması projesidir.
+📢 M&Y Yazılım Akademi Danışmanlıktan aldığım eğitim kapsamında geliştirmiş olduğum 8. proje olan MongoDb NoSQL - Google Cloud Projesidir. Proje caselerini istenen şekilde tamamladım.
 
 ## 🪶 Projenin Amacı;
 Projede Müşteri, Ürün, Sipariş, Kategori ve KategoriDurum olmak üzere toplamda 5 adet entity bulunmaktadır. Projenin ana odağı MongoDb ve Google Cloud teknolojileri üzerine kurulmuştur. Proje direkt yönetim paneliyle açılmakta, ilgili sınıflarda CRUD işlemleri yapılabilmektedir. Bununla birlikte MongoDb' de tutulan veriler istatistik ekranında görüntülenebilmekdir. Ürün Listesi ve Müşteri Listesi PDF ve Excel formatlarında dinamik olarak indirilebilmektedir.
