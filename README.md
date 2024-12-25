@@ -17,7 +17,7 @@ Projede Müşteri, Ürün, Sipariş, Kategori ve KategoriDurum olmak üzere topl
 * 🔁 Projede bol bol iç içe Layout ve ViewComponent yapısı kullanıldı.
 
 # Tanıtım
-![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/mongoDbGoogleCloudProject.gif?raw=true)
+![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/mongoDbGoogleCloudProject.gif)
 ### Veritabanı
 ![Veritabanı](https://github.com/batuhanyalin/MongoDb/blob/master/MongoDb/wwwroot/images/projectScreenshots/database.png?raw=true)
 
