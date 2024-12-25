@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "CustomerList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 
@@ -19,8 +20,10 @@
     <tbody>
         @foreach (var item in Model)
         {
+            count++;
             <tr>
-                <td>@item.CustomerId</td>
+
+                <td>@count</td>
                 <td>@item.Name</td>
                 <td>@item.Surname</td>
                 <td><a class="btn btn-danger" href="/Customer/DeleteCustomer/@item.CustomerId">Sil</a></td>

@@ -1,6 +1,7 @@
 using Microsoft.Extensions.Options;
 using MongoDb.Services.CategoryServices;
 using MongoDb.Services.CustomerServices;
+using MongoDb.Services.GoogleStorageServices;
 using MongoDb.Services.OrderServices;
 using MongoDb.Services.OrderStatusServices;
 using MongoDb.Services.ProductServices;
@@ -18,6 +19,7 @@ builder.Services.AddScoped<IOrderService, OrderService>();
 builder.Services.AddScoped<IOrderStatusService, OrderStatusService>();
 builder.Services.AddScoped<ICustomerService, CustomerService>();
 
+builder.Services.AddScoped<IGoogleStorageService, GoogleStorageService>();
 
 builder.Services.Configure<DatabaseSettings>(builder.Configuration.GetSection("DatabaseSettings"));
 builder.Services.AddScoped<IDatabaseSettings>(sp =>

@@ -2,8 +2,8 @@
 @{
     ViewData["Title"] = "CategoryList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
-
     <div class="alert alert-primary">Kategori Listesi</div>
     <table class="table table-bordered table-hover">
         <thead>
@@ -17,8 +17,9 @@
         <tbody>
             @foreach (var item in Model)
             {
+                count++;
                 <tr>
-                    <td>@item.CategoryId</td>
+                    <td>@count</td>
                     <td>@item.CategoryName</td>
                     <td><a class="btn btn-danger" href="/Category/DeleteCategory/@item.CategoryId">Sil</a></td>
                     <td><a class="btn btn-warning" href="/Category/UpdateCategory/@item.CategoryId">Güncelle</a></td>

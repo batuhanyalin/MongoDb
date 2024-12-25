@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "OrderList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
 <div class="alert alert-primary">Sipariş Listesi</div>
@@ -21,8 +22,9 @@
     <tbody>
         @foreach (var item in Model)
         {
+            count++;
             <tr>
-                <td>@item.OrderId</td>
+                <td>@count</td>
                 <td>@item.Product.ProductName</td>
                 <td>@item.Customer.Name @item.Customer.Surname</td>
                 <td>@item.OrderDate.ToString("dd.MM.yyy")</td>

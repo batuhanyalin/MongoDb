@@ -2,6 +2,7 @@
 @{
     ViewData["Title"] = "ProductList";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int count = 0;
 }
 
     <div class="alert alert-primary">Ürün Listesi</div>
@@ -9,6 +10,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Görsel</th>
                 <th>Ürün Adı</th>
                 <th>Kategori</th>
                 <th>Stok</th>
@@ -20,8 +22,10 @@
         <tbody>
             @foreach (var item in Model)
             {
+                count++;
                 <tr>
-                    <td>@item.ProductId</td>
+                    <td>@count</td>
+                    <td><img src="@item.ImageUrl" height="150" width="200" /></td>
                     <td>@item.ProductName</td>
                     <td>@item.Category.CategoryName</td>
                     <td>@item.Stock</td>

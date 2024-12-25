@@ -7,5 +7,7 @@
         public decimal Price { get; set; }
         public int Stock { get; set; }
         public string? CategoryId { get; set; }
+        public IFormFile Image { get; set; }
+        public string CurrentImage { get; set; }
     }
 }

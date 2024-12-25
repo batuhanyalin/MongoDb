@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MongoDb.Dtos.ProductDtos;
 using MongoDb.Entities;
+using MongoDb.Services.GoogleStorageServices;
 using MongoDb.Settings;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -12,15 +13,16 @@ namespace MongoDb.Services.ProductServices
         private readonly IMongoCollection<Product> _productCollection;
         private readonly IMongoCollection<Category> _categoryCollection;
         private readonly IMapper _mapper;
+        private readonly IGoogleStorageService _googleStorageService;
 
-
-        public ProductService(IMapper mapper, IDatabaseSettings _databaseSettings)
+        public ProductService(IMapper mapper, IDatabaseSettings _databaseSettings, IGoogleStorageService googleStorageService)
         {
             var client = new MongoClient(_databaseSettings.ConnectionString);
             var database = client.GetDatabase(_databaseSettings.DatabaseName);
             _productCollection = database.GetCollection<Product>(_databaseSettings.ProductCollectionName);
             _categoryCollection = database.GetCollection<Category>(_databaseSettings.CategoryCollectionName);
             _mapper = mapper;
+            _googleStorageService = googleStorageService;
         }
         public async Task<List<ResultProductDto>> GetAllProductsAsync()
         {
@@ -39,8 +41,16 @@ namespace MongoDb.Services.ProductServices
         }
         public async Task CreateProductAsync(CreateProductDto createProductDto)
         {
-            var value = _mapper.Map<Product>(createProductDto);
-            await _productCollection.InsertOneAsync(value); //MongoDbde Insert işlemi InsertOneAsync metoduyla sağlanır.
+            var product = _mapper.Map<Product>(createProductDto);
+
+            if (createProductDto.Image != null)
+            {
+                var googleStorageService = new GoogleStorageService();
+                var imageUrl = await googleStorageService.UploadFileAsync(createProductDto.Image, "mongod-project", "product-images");
+                product.ImageUrl = imageUrl;
+            }
+
+            await _productCollection.InsertOneAsync(product); //MongoDbde Insert işlemi InsertOneAsync metoduyla sağlanır.
         }
 
         public async Task DeleteProductAsync(string id)
@@ -54,10 +64,18 @@ namespace MongoDb.Services.ProductServices
             return _mapper.Map<GetByIdProductDto>(value);
         }
 
-        public Task UpdateProductAsync(UpdateProductDto updateProductDto)
+        public async Task UpdateProductAsync(UpdateProductDto updateProductDto)
         {
-            var value = _mapper.Map<Product>(updateProductDto);
-            return _productCollection.FindOneAndReplaceAsync(x => x.ProductId == updateProductDto.ProductId, value);
+            var product = _mapper.Map<Product>(updateProductDto);
+
+            if (updateProductDto.Image != null)
+            {
+                var googleStorageService = new GoogleStorageService();
+                var imageUrl = await googleStorageService.UploadFileAsync(updateProductDto.Image, "mongod-project", "product-images");
+                product.ImageUrl = imageUrl;
+            }
+
+            await _productCollection.FindOneAndReplaceAsync(x => x.ProductId == updateProductDto.ProductId, product);
         }
     }
 }

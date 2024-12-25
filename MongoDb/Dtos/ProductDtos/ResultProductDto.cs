@@ -9,6 +9,7 @@ namespace MongoDb.Dtos.ProductDtos
         public string ProductName { get; set; }
         public decimal Price { get; set; }
         public int Stock { get; set; }
+        public string ImageUrl { get; set; }
         public ResultCategoryDto Category { get; set; }
     }
 }

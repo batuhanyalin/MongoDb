@@ -6,7 +6,7 @@
     <div class="col col-md-4">
         <div class="alert alert-success"><h5>Yeni Ürün</h5></div>
         <hr />
-        <form method="post">
+        <form enctype="multipart/form-data" method="post">
             <label>Ürün Adı</label>
             <input type="text" asp-for="ProductName" class="form-control" />
             <br />
@@ -18,6 +18,9 @@
             <br />
             <label>Fiyat</label>
             <input type="text" asp-for="Price" class="form-control" />
+            <br />
+            <label>Ürün Görsel</label>
+            <input type="file" asp-for="Image" class="form-control" />
             <br />
             <button class="btn btn-success"><i class="fas fa-save"></i> Kaydet</button>
         </form>

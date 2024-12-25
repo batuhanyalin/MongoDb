@@ -52,6 +52,7 @@ namespace MongoDb.Controllers
                 Stock = value.Stock,
                 Price = value.Price,
                 CategoryId=value.CategoryId,
+                CurrentImage=value.ImageUrl,
             };
             var values = await _categoryService.GetAlllCategoryAsync();
             List<SelectListItem> cat = (from x in values.ToList()
@@ -74,5 +75,12 @@ namespace MongoDb.Controllers
             await _productService.DeleteProductAsync(id);
             return RedirectToAction("ProductList");
         }
+        [HttpPost]
+
+        public async Task<IActionResult> ProductDownload()
+        {
+            return View("ProductList");
+        }
+
     }
 }

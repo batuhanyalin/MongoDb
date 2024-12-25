@@ -17,5 +17,6 @@ namespace MongoDb.Entities
         [BsonRepresentation(BsonType.ObjectId)]
         public string CategoryId {  get; set; }
         public Category Category { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
