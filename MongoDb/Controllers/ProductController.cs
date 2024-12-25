@@ -1,10 +1,12 @@
-﻿using iTextSharp.text;
+﻿using ClosedXML.Excel;
+using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MongoDb.Dtos.ProductDtos;
 using MongoDb.Services.CategoryServices;
 using MongoDb.Services.ProductServices;
+using OfficeOpenXml;
 
 namespace MongoDb.Controllers
 {
@@ -54,8 +56,8 @@ namespace MongoDb.Controllers
                 ProductName = value.ProductName,
                 Stock = value.Stock,
                 Price = value.Price,
-                CategoryId=value.CategoryId,
-                CurrentImage=value.ImageUrl,
+                CategoryId = value.CategoryId,
+                CurrentImage = value.ImageUrl,
             };
             var values = await _categoryService.GetAlllCategoryAsync();
             List<SelectListItem> cat = (from x in values.ToList()
@@ -63,7 +65,7 @@ namespace MongoDb.Controllers
                                         {
                                             Text = x.CategoryName,
                                             Value = x.CategoryId
-                                        }).ToList();    
+                                        }).ToList();
             ViewBag.categoryList = cat;
             return View(updateProductDto);
         }
@@ -81,10 +83,41 @@ namespace MongoDb.Controllers
 
         public async Task<IActionResult> ProductDownload()
         {
+            var products = await _productService.GetAllProductsAsync();
+            //ExcelPackage excel = new ExcelPackage();
+            //var workSheet = excel.Workbook.Worksheets.Add("Sayfa1");
+            //workSheet.Cells[1, 1].Value = "Ürün Adı";
+            //workSheet.Cells[1, 2].Value = "Kategori";
+            //workSheet.Cells[1, 3].Value = "Stok";
+            //workSheet.Cells[1, 4].Value = "Fiyat";
+            //workSheet.Cells[1, 5].Value = "Görsel";
 
 
+            using (var workBook = new XLWorkbook())
+            {
+                var workSheet = workBook.Worksheets.Add("Ürün Listesi");
+                workSheet.Cell(1, 1).Value = "Ürün Adı";
+                workSheet.Cell(1, 2).Value = "Kategori";
+                workSheet.Cell(1, 3).Value = "Stok";
+                workSheet.Cell(1, 4).Value = "Fiyat";
 
-            return View("ProductList");
+                int rowCount = 2;
+
+                foreach (var item in products)
+                {
+                    workSheet.Cell(rowCount, 1).Value = item.ProductName;
+                    workSheet.Cell(rowCount, 2).Value = item.Category.CategoryName;
+                    workSheet.Cell(rowCount, 3).Value = item.Stock;
+                    workSheet.Cell(rowCount, 4).Value = item.Price;
+                    rowCount++;
+                }
+                using (var stream = new MemoryStream())
+                {
+                    workBook.SaveAs(stream);
+                    var content=stream.ToArray();
+                    return File(content,"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","productList.xlsx");
+                }
+            }
         }
 
     }
