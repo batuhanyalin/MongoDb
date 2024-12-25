@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using MongoDb.Dtos.ProductDtos;
 using MongoDb.Services.CategoryServices;
@@ -10,6 +12,7 @@ namespace MongoDb.Controllers
     {
         private readonly IProductService _productService;
         private readonly ICategoryService _categoryService;
+
 
         public ProductController(IProductService productService, ICategoryService categoryService)
         {
@@ -75,10 +78,12 @@ namespace MongoDb.Controllers
             await _productService.DeleteProductAsync(id);
             return RedirectToAction("ProductList");
         }
-        [HttpPost]
 
         public async Task<IActionResult> ProductDownload()
         {
+
+
+
             return View("ProductList");
         }
 
